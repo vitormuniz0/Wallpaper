@@ -1,15 +1,20 @@
-const {Sequelize} = require('sequelize');
+import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize('database', 'username', 'password',{
-    host: 'localhost',
-    dialect: 'mysql'
+export const sequelize = new Sequelize('wallpaper', 'root', '', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
 
-try {
+const testConnection = async () => {
+  try {
     await sequelize.authenticate();
     console.log('Conexão estabelecida com Sucesso!.');
   } catch (error) {
     console.error('Conexão deu erro:', error);
+    throw error;
   }
+}
 
-export default sequelize;
+
+
+export default {testConnection};
