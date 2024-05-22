@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../connection";
+import { sequelize } from "../connection";
 
 const PostCriado = sequelize.define('post_criado', {
     id_post: {
@@ -15,7 +15,11 @@ const PostCriado = sequelize.define('post_criado', {
             key: 'id'  // nome da coluna
         }
     },
-    postCriado: {
+    post: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    categoria: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -24,6 +28,13 @@ const PostCriado = sequelize.define('post_criado', {
         allowNull: false,
         defaultValue: DataTypes.NOW
     },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    }
+}, {
+    tableName:"post_criado"
 }
 );
 

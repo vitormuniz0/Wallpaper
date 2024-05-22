@@ -1,5 +1,5 @@
 import express from "express";
-import {UserController} from '../controllers/index'
+import {UserController} from '../controllers/userController'
 
 const userController = new UserController();
 
@@ -23,13 +23,13 @@ router.post("/createUser", (req, res) => {
 })
 
 // Rota para atualizar usuario
-router.put("/user/:id", (req, res) => {
+router.put("/updateUser/:id", (req, res) => {
     const updateUser = userController.updateUser(req, res);
     res.json(updateUser);
 })
 
 // Rota para deletar usuario
-router.delete("/user/:id", (req, res) => {
+router.delete("/deleteUser/:id", (req, res) => {
     const deleteUser = userController.deleteUser(req, res);
     res.json(deleteUser);
 })

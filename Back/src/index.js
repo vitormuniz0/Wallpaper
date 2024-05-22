@@ -1,6 +1,8 @@
 import express from 'express';
 import connection from './connection/index.js';
-import router from './routes/index.js';
+import useRouter from './routes/userRoutes.js';
+import postRouter from './routes/postRoutes.js';
+import salvarRouter from './routes/salvarRoutes.js';
 
 // inicializando servidor
 const app = express();
@@ -10,7 +12,9 @@ const PORT = 3008;
 
 // indicando que ele utilizara json
 app.use(express.json());
-app.use(router)
+app.use(useRouter)
+app.use(postRouter)
+app.use(salvarRouter)
 
 const startServer = async () => {
     try {

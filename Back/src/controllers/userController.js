@@ -4,17 +4,6 @@ const { hash } = pkg;
 
 export class UserController {
 
-    validateUserData(nome, email, senha) {
-        if (!nome || !email || !senha) {
-            return {
-                nome: 'Nome é obrigatório!',
-                email: 'Email é obrigatório!',
-                senha: 'Senha é obrigatória!',
-            };
-        }
-    }
-
-
     // CRIAR USER
     async createUser(req, res) {
 
@@ -23,35 +12,34 @@ export class UserController {
         // pegando o corpo da requisição para validar se está passando todos os parametros 
         const { nome, email, senha } = req.body;
 
-        // chamando a funcao
-        const validationErrors = this.validateUserData(nome, email, senha);
 
-
-        if (validationErrors) {
-            return res.status(400).json({ message: "Nome, email, e senha é Obrigatório" });
+        if (!nome, !email, !senha) {
+            console.log("Nome, email, e senha é Obrigatório")
+            return res.status(400).json({ error: "Nome, email, e senha é Obrigatório" });
         }
 
-        try {
-            const userExists = await Users.findOne({ where: { email } });
-            // verificando se existe o user
-            if (userExists) {
-                console.log("Usuario já Existe!")
-                return res.status(400).json({ error: "Este Usuário já existe" })
-            }
-            // hash da senha
-            const has_password = await hash(senha, 8);
 
+        const userExists = await Users.findOne({ where: { email } });
+        // verificando se existe o user
+        if (userExists) {
+            console.log("Usuario já Existe!")
+            return res.status(400).send()
+        }
+        // hash da senha
+        const has_password = await hash(senha, 8);
+        try {
             // se não existir ele vai criar user no banco 
             const user = await Users.create({
                 nome,
                 email,
                 senha: has_password,
             });
-            return res.status(201).json({ message: "Usuario criado com sucesso!", user });
+            console.log("Usuario Criado")
+            return res.status(201).send();
         } catch (error) {
             // se der algum erro irá mostrar
             console.error("Erro ao criar usuário ", error)
-            return res.status(500).json({ error: "Erro interno do servidor" })
+            return res.status(500).json()
         }
     }
 
@@ -61,14 +49,11 @@ export class UserController {
             const users = await Users.findAll({
                 attributes: ['id', 'nome', 'email'],
             });
-            const sanitizedUsers = users.map((user) => {
-                return { id: user.id, nome: user.nome, email: user.email };
-            });
-
-            return res.status(200).json({ message: "Usuários encontrados!", users: sanitizedUsers });
+            return res.status(200).json({ users });
         } catch (error) {
             console.error("Erro ao buscar usuários", error);
-            return res.status(500).json({ error: "Erro interno do servidor" });
+            // Include error details in the response
+            return res.status(500).json({ error: error.message || "Internal Server Error" });
         }
     }
 
@@ -80,10 +65,10 @@ export class UserController {
             // validando a presenca dos campos obrigatórios 
             const { nome, email, senha } = req.body;
             const { id } = req.params;
-            const validationErrors = this.validateUserData(nome, email, senha);
 
-            if (validationErrors) {
-                return res.status(400).json({ message: "Nome, email, e senha é Obrigatório", errors: validationErrors });
+            if (!nome, !email, !senha) {
+                console.log("Nome, email, e senha é Obrigatório")
+                return res.status(400).json({ message: "Nome, email, e senha é Obrigatório" });
             }
 
             const updateData = { nome, email, senha };

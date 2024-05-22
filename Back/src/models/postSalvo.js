@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../connection";
+import { sequelize } from "../connection";
 
 const PostSalvo = sequelize.define('post_salvo', {
     id_post: {
@@ -19,11 +19,22 @@ const PostSalvo = sequelize.define('post_salvo', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    dataCriacao: {
+    categoria: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW
     },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW
+    },
+}, {
+    tableName: "post_salvo"
 }
 );
 
