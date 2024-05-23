@@ -18,9 +18,9 @@ router.post("/salvarPost", (req, res) => {
     res.status(201).json(salvo);
 })
 
-router.get("/salvoId/:id", (req, res) => {
-    const updateUser = userController.buscarIdSalvo(req, res);
-    res.json(updateUser);
+router.get("/salvoId/:user_id", (req, res) => {
+    const salvosId = salvarController.buscarIdSalvo(req, res);
+    res.status(201).json(salvosId);
 })
 
 export default router;

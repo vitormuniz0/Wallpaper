@@ -20,7 +20,7 @@ export class SalvarController {
                 categoria
             });
             console.log("Post Salvo sucesso!")
-            return res.status(201).json({ message: "Post Salvo com sucesso!", posts });
+            return res.status(201).json();
         } catch (error) {
             console.error("Erro ao salvar post ", error)
             return res.status(500).json({})
@@ -41,32 +41,30 @@ export class SalvarController {
     }
 
     async buscarIdSalvo(req, res) {
-        const { user_id, postSalvo, categoria } = req.body;
+        const { user_id } = req.params;
 
-        if (!postSalvo || !categoria || !user_id) {
-            console.log("Id do user , Foto e Categoria são obrigatórios")
+        if (!user_id) {
+            console.log("Id do user é obrigatório")
             res.status(400).json({})
         }
 
-        const query = {
-            user_id
-        }
+        const query = { user_id }
 
         try {
-            const posts = await Posts.findAll({
-                where: query
-            });
+            const posts = await Posts.findAll({ where: query });
 
             if (posts.leangth === 0) {
                 console.log("Nenhum post Salvo")
-                return res.status(404).json({ error: "Nenhum post Salvo" })
+                return res.status(404).json()
+            } else {
+                console.log("Post salvo exibido!")
+                return posts;
             }
 
-            return res.status(200).json({ posts });
 
         } catch (error) {
             console.error("Erro ao buscar posts salvos:", error);
-            return res.status(500).json({ error: "Erro interno do servidor" });
+            return res.status(500).json();
         }
 
 
