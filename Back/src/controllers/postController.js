@@ -1,25 +1,28 @@
-import Posts from '../models/postCriado.js'
 
+import Posts from '../models/postCriado.js'
+import fs from 'fs'
 
 export class PostController {
 
     async createPost(req, res) {
 
-        const { user_id , post, categoria } = req.body;
+        const { user_id, categoria } = req.body;
 
-        if (!post|| !categoria || !user_id) {
+        const file = req.file;
+
+        if (!file || !categoria || !user_id) {
             console.log("Id do user , Foto e Categoria são obrigatórios")
-            res.status(400).json()
+            res.status(400).json("Id do user , Foto e Categoria são obrigatórios")
         }
 
         try {
             const posts = await Posts.create({
                 user_id,
-                post,
+                src: file.path,
                 categoria
             });
             console.log("Post Criado com sucesso!")
-            return res.status(201).json({ message: "Post criado com sucesso!", posts });
+            return res.status(201).json();
         } catch (error) {
             console.error("Erro ao criar post ", error)
             return res.status(500).json()
@@ -29,15 +32,36 @@ export class PostController {
     async getAllPost(req, res) {
         try {
             const posts = await Posts.findAll({
-                attributes: ['user_id' ,'post', 'categoria'],
+                attributes: ['user_id', 'src', 'categoria'],
             });
-        
-            return res.status(200).json({ message: "Usuários encontrados!", posts });
+            console.log("Posts Encontrados")
+            return res.status(200).json();
         } catch (error) {
-            console.error("Erro ao buscar usuários", error);
-            return res.status(500).json({ error: "Erro interno do servidor" });
+            console.error("Erro ao buscar posts", error);
+            return res.status(500).json();
         }
     }
 
+    async removePost(req, res) {
+        try {
+            const posts = await Posts.findAll(req.params.id)
 
+            if(!posts){
+                console.log("Imagem não encontrada")
+                res.status(404).json()
+            }
+
+            fs.unlink(posts.src)
+
+            await Posts.destroy({where : {posts}});
+
+            console.log("Imagem removida")
+                res.status(200).json()
+
+        } catch (error) {
+            
+        }
+    }
 }
+
+

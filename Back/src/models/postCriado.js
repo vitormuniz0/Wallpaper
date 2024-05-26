@@ -15,7 +15,7 @@ const PostCriado = sequelize.define('post_criado', {
             key: 'id'  // nome da coluna
         }
     },
-    post: {
+    src: {
         type: DataTypes.STRING,
         allowNull: false
     },

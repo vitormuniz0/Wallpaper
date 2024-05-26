@@ -3,6 +3,10 @@ import connection from './connection/index.js';
 import useRouter from './routes/userRoutes.js';
 import postRouter from './routes/postRoutes.js';
 import salvarRouter from './routes/salvarRoutes.js';
+import authRouter from './routes/authRoutes.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // inicializando servidor
 const app = express();
@@ -15,6 +19,7 @@ app.use(express.json());
 app.use(useRouter)
 app.use(postRouter)
 app.use(salvarRouter)
+app.use(authRouter)
 
 const startServer = async () => {
     try {

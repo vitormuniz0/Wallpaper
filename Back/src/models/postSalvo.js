@@ -15,7 +15,7 @@ const PostSalvo = sequelize.define('post_salvo', {
             key: 'id'  // nome da coluna
         }
     },
-    postSalvo: {
+    src: {
         type: DataTypes.STRING,
         allowNull: false
     },
