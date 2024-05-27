@@ -185,12 +185,14 @@ input[type="text"] {
 }
 
 .img-container{
-    display: flex;
+    pointer-events: auto;
+    position:absolute;
+    z-index: 1;
     align-items: left;
     justify-content: left;
     margin-left: 10px;
-    width: 340px;
-    height: 340px;
+    width: 200px;
+    height: auto;
     border-radius: 10px;
     margin-top: -550px;
 }
