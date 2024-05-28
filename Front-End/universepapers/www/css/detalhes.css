@@ -1,0 +1,37 @@
+:root{
+    --preto: #000000;
+    --roxo: #800080;
+    --grafite: #2a2a2a;
+    --silver: #C0C0C0;
+}
+
+body {
+   background-color: var(--preto);
+}
+
+.buttons-top{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons-top a{
+    width: 40px;
+    height: 40px;
+    background-color: var(--grafite);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver);
+    border: 1px;
+}
+
+.buttons-top a:first-child {
+    margin-left: 20px;
+
+}
+
