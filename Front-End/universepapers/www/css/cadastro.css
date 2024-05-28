@@ -1,3 +1,10 @@
+:root{
+    --preto: #000000;
+    --roxo: #800080;
+    --grafite: #2a2a2a;
+    --silver: #C0C0C0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,12 +12,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #034d40;
+    background-color: var(--preto);
     font-family: Arial, sans-serif;
 }
 
 .login-container {
-    background-color: #60a393;
+    background-color: var(--grafite);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -19,7 +26,7 @@ body {
 }
 
 .cadastro-container {
-    background-color: #60a393;
+    background-color:var(--grafite);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -60,7 +67,7 @@ form input[type="password"] {
 form button {
     width: 100%;
     padding: 10px;
-    background-color: #034d40;
+    background-color: var(--preto);
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -69,16 +76,16 @@ form button {
 }
 
 form button:hover {
-    background-color: #026357;
+    background-color: var(--grafite);
 }
 
 .criar-conta p {
     margin: 20px 0 0;
-    color: #03665A;
+    color: var(--preto)
 }
 
 .criar-conta a {
-    color: #03665A;
+    color: var(--silver);
     text-decoration: none;
 }
 
