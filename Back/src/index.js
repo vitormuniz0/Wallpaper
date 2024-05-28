@@ -5,6 +5,7 @@ import postRouter from './routes/postRoutes.js';
 import salvarRouter from './routes/salvarRoutes.js';
 import authRouter from './routes/authRoutes.js';
 import dotenv from 'dotenv';
+import cors from "cors";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(useRouter)
 app.use(postRouter)
 app.use(salvarRouter)
 app.use(authRouter)
+app.use(cors())
 
 const startServer = async () => {
     try {
