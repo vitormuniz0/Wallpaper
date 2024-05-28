@@ -17,7 +17,7 @@ export class AuthController {
 
             if(!email , !senha){
                 console.log("Nome e  email é Obrigatório")
-                return res.status(400).json()
+                return res.status(400).json();
             }
 
             const user = await Users.findOne({where: {email}})
