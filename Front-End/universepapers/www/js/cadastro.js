@@ -1,5 +1,20 @@
 import { api } from "../services";
 
+
+const api = {
+    post: async function (url, data) {
+        // Simulate API call
+        return new Promise((resolve, reject) => {
+            if (data.email === "existing@example.com") {
+                reject({ response: { status: 400 } });
+            } else {
+                resolve({ data: "User created successfully" });
+            }
+        });
+    }
+};
+
+
 document.getElementById('cadastroForm').addEventListener('submit', async function (event) {
     event.preventDefault();
     const nome = document.getElementById('nome').value;
