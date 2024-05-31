@@ -27,26 +27,58 @@
 
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div data-name="link2" class="page">
 
-                <!-- Top Navbar -->
-                <div class="navbar">
-                    <div class="navbar-bg"></div>
-                    <div class="navbar-inner justify-content-center">
-                        <div class="title ">Link 2</div>
-                    </div>
+            <!-- TAB BAR-->
+            <div id="menuPrincipal" class="toolbar toolbar-bottom">
+                <div class="toolbar-inner display-flex">
+                    <a href="/index/" class="tab-link link active">
+                        <i class="ri-home-5-line"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/link2/" class="tab-link link">
+                        <i class="ri-search-2-line"></i>
+                        <span>Explorar</span>
+                    </a>
+                    <a href="/link3/" class="tab-link link">
+                        <i class="ri-heart-3-line"></i>
+                        <span>Favoritos</span>
+                    </a>
+                    <a href="/link4/" class="tab-link link">
+                        <i class="ri-user-line"></i>
+                        <span>Perfil</span>
+                    </a>
                 </div>
+            </div>
+
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="index" class="page color-theme-black">
+
+                <!-- NAV TOPO
+                <div class="top-nav">
+                    <h1 class="title-logo"><span>Universe Papers</span></h1>
+                    <a href="#" class="btn-fav" data-count= "1">
+                        <i class="ri-heart-3-line"></i>
+                    </a>
+                </div>
+            
+                <form>
+                    <input placeholder="O que você procura?" type="text">
+                    <i class="icone-busca ri-search-2-line"></i>
+                </form>
+            </div>-->
 
                 <!-- Scrollable page content -->
                 <div class="page-content">
                     <div class="block">
-                        Conteúdo do link 2
+                        <div class="top-nav">
+                            <h1 class="title-logo"><span>Universe Papers</span></h1>
+                        </div>
+                    
+                        <form>
+                            <input placeholder="O que você procura?" type="text">
+                            <i class="icone-busca ri-search-2-line"></i>
+                        </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Path to Framework7 Library Bundle JS-->
     <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
 	<!-- jQuery -->
