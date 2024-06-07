@@ -196,3 +196,42 @@ input[type="text"] {
     border-radius: 10px;
     margin-top: -550px;
 }
+
+.img-container2{
+    pointer-events: auto;
+    position:absolute;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    margin-left: 230px;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: -650px;
+}
+
+.img-container3{
+    pointer-events: auto;
+    position:absolute;
+    z-index: 1;
+    align-items: left;
+    justify-content: left;
+    margin-left: 10px;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 2px;
+}
+
+.img-container4{
+    pointer-events: auto;
+    position:absolute;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    margin-left: 230px;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: -130px;
+}
